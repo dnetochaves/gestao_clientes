@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    Start Clientes
+{% endblock %}
+
+{% block main %}
+  
+<div class="container-fluid">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Cod</th>
+      <th scope="col">Frist Name</th>
+      <th scope="col">last_name</th>
+      <th scope="col">age</th>
+      <th scope="col">salary</th>
+      <th scope="col">bio</th>
+      <th scope="col">photo</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for persons in person %}
+    <tr>
+      <th scope="row">{{ persons.id }}</th>
+      <td> <a href="{% url 'update_person' persons.id %}">{{ persons.frist_name }}</a></td>
+      <td>{{ persons.last_name }}</td>
+      <td>{{ persons.age }}</td>
+      <td>{{ persons.salary }}</td>
+      <td>{{ persons.bio }}</td>
+      <td><a href="{{ persons.photo }}">{{ persons.photo }}</td>
+      <td><a href="{% url 'delete_person' persons.id %}">Deletar</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

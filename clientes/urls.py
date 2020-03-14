@@ -6,6 +6,7 @@ from .views import person_list
 from .views import new_person
 from .views import update_person
 from .views import delete_person
+from .views import DocsList
 
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path('new_person/', new_person, name='new_person'),
     path('update_person/<int:id>', update_person, name='update_person'),
     path('delete_person/<int:id>', delete_person, name='delete_person'),
+    path('docs_list', DocsList.as_view(), name='docs_list'),
 ]

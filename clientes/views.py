@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Person
+from .models import Person, Docs
 from .forms import PersonForm
 from django.contrib import messages
+from django.views.generic import ListView
 
 # Create your views here.
 
@@ -45,3 +46,5 @@ def delete_person(request, id):
     messages.success(request, f'{ person.frist_name } excluido')
     return redirect('/clientes/person_list')   
 
+class DocsList(ListView):
+    model = Docs

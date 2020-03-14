@@ -11,3 +11,12 @@ class Person(models.Model):
 
     def __str__(self):
         return self.frist_name
+
+
+class Docs(models.Model):
+    type_name = models.CharField(max_length=100)
+    note = models.TextField()
+
+    def __str__(self):
+        return self.type_name
+

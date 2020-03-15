@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+    Start Clientes
+{% endblock %}
+
+{% block main %}
+<h1><a href="{% url 'docs_delete' object.id %}">{{ object.id }}</a></h1>
+<h1>{{ object.type_name }}</h1>
+<h1>{{ object.note }}</h1>
+{% endblock %}

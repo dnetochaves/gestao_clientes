@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %}
+    Start Clientes
+{% endblock %}
+
+{% block main %}
+
+<form method="post">
+    {% csrf_token %}
+    <h1>{{ object.a }}</h1>
+    <p>Are you sure you want to delete "{{ object.note }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+{% endblock %}

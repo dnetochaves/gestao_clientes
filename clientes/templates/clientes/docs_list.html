@@ -1,5 +1,28 @@
-<h1>DocsList</h1>
+{% extends 'base.html' %}
+{% block title %}
+    Start Clientes
+{% endblock %}
 
-{% for docs in object_list %}
-    <l1>{{ docs.type_name }}</l1><br><l1>{{ docs.note }}</l1>
-{% endfor %}
+{% block main %}
+<h1>{{ now|date }}</h1>  
+<div class="container-fluid">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Cod</th>
+      <th scope="col">Type</th>
+      <th scope="col">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for docs in object_list %}
+    <tr>
+      <th scope="row">{{ docs.id }}</th>
+      <td> <a href="{% url 'docs_detail' docs.id %}">{{ docs.type_name }}</a></td>
+      <td>{{ docs.note }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

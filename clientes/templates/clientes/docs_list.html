@@ -4,25 +4,42 @@
 {% endblock %}
 
 {% block main %}
-<h1>{{ now|date }}</h1>  
 <div class="container-fluid">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Cod</th>
-      <th scope="col">Type</th>
-      <th scope="col">Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for docs in object_list %}
-    <tr>
-      <th scope="row">{{ docs.id }}</th>
-      <td> <a href="{% url 'docs_detail' docs.id %}">{{ docs.type_name }}</a></td>
-      <td>{{ docs.note }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+  <div class="card text-center">
+    <div class="card-header">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a class="btn btn-secondary " href="{% url 'docs_create' %}"><i class="fas fa-plus"></i></a>
+        <a class="btn btn-secondary " href="{% url 'new_person' %}"><i class="fas fa-arrow-circle-down"></i></a>
+      </div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Listagem de Documentos</h5>
+      <div class="table-responsive">
+        <table class="table table-hover table-dark table-sm table-bordered">
+          <thead class="thead-dark"> 
+            <tr>
+              <th scope="col">Cod</th>
+              <th scope="col">Type_name</th>
+              <th scope="col">Note</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for docs in object_list %}
+            <tr>
+              <th scope="row">{{ docs.id }}</th>
+              <td>{{ docs.type_name }}</td>
+              <td>{{ docs.note }}</td>
+              <td>
+                <a href="{% url 'docs_delete' docs.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-trash"></i></a>
+                <a href="{% url 'docs_update' docs.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

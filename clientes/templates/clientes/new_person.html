@@ -5,11 +5,41 @@
 {% endblock %}
 
 {% block main %}
-<div class="container">
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form|bootstrap }}
-    <button type="submit" class="btn btn-primary">Salvar</button>
-</form>
-</div>
+<div class="container-fluid">
+
+<br>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+         
+            <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </li>
+            </ul>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            {{ form.frist_name|bootstrap }}
+            </div>
+            <div class="form-group col-md-6">
+            {{ form.last_name|bootstrap }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            {{ form.age|bootstrap }}
+            </div>
+            <div class="form-group col-md-6">
+            {{ form.salary|bootstrap }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.bio|bootstrap }}
+        </div>
+        <div class="form-row bg-secondary border border-primary"">
+            <div class="form-group col-md-12">
+            {{ form.photo|bootstrap }}
+            </div> 
+        </div>
+       
+        </form>
 {% endblock %}

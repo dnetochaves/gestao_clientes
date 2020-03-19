@@ -6,6 +6,7 @@ from .views import person_list
 from .views import new_person
 from .views import update_person
 from .views import delete_person
+from .views import manager_dashboar
 from .views import DocsList, DocsDetail, DocsCreate, DocsUpdate, DocsDelete, DashBoard
 
 
@@ -21,4 +22,5 @@ urlpatterns = [
     path('docs_update/<int:pk>/', DocsUpdate.as_view(), name='docs_update'),
     path('docs_delete/<int:pk>/', DocsDelete.as_view(), name='docs_delete'),
     path('dashboard/', DashBoard.as_view(), name='dashboard'),
+    path('manager_dashboar/', manager_dashboar, name='manager_dashboar'),
 ]

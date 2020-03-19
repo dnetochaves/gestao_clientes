@@ -10,6 +10,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Count, Avg
 from django.http import HttpResponse
+from django.contrib.auth.decorators import permission_required
 
 # Create your views here.
 
@@ -18,12 +19,23 @@ def start(request):
     #return HttpResponse('start')
     return render(request, 'clientes/start_clientes.html')
 
+@login_required
+@permission_required('clientes.view_person')
+def manager_dashboar(request):
+    #return HttpResponse('start')
+    return render(request, 'clientes/dashboard.html')
+    
+
 class DashBoard(TemplateView):
-    template_name = "clientes/dashboard.html"
+   template_name = ('clientes/dashboard.html')
 
 
 
+    
 
+
+
+@permission_required('clientes.alter_salary_person')
 def person_list(request):
     if not request.user.has_perm('clientes.view_person'):
         messages.success(request, 'contact your system administrator. You are not allowed to access this area')
@@ -55,6 +67,7 @@ def update_person(request, id):
 
 
 @login_required
+@permission_required('clientes.delete_person')
 def delete_person(request, id):
     person = get_object_or_404(Person, pk=id)
     person.delete()

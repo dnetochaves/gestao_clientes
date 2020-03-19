@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import Count, Avg
+from django.contrib.auth.models import Permission
+
 
 # Create your models here.
 class Docs(models.Model):
@@ -19,6 +21,12 @@ class Person(models.Model):
     bio = models.TextField()
     photo = models.ImageField(upload_to='clients_photo', null=True, blank=True)
     doc = models.OneToOneField(Docs, null=True, blank=True, on_delete=models.PROTECT)
+
+    class Meta:
+        permissions = (
+            ('alter_salary', 'Usuário pode alterar valor salario'),
+            ('manager_dashboard-clients', 'Can view clients manager dashboar'),
+        )   
 
    
 

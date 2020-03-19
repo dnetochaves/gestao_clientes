@@ -80,10 +80,13 @@
                 <ul class="nav justify-content-end bg-light">
                     
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i></a>
+                        <a class="nav-link active" href="{% url 'manager_dashboar' %}"><i class="fas fa-tachometer-alt"></i> Manager </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Salesman</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'start' %}"><i class="fa fa-play"></i></a>
+                        <a class="nav-link active" href="{% url 'start' %}"><i class="fa fa-play"></i> Star</a>
                     </li>
                   </ul>
                 {% if messages %}

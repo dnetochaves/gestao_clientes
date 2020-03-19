@@ -26,7 +26,9 @@ class Person(models.Model):
         permissions = (
             ('alter_salary', 'Usuário pode alterar valor salario'),
             ('manager_dashboard-clients', 'Can view clients manager dashboar'),
+            ('view_list', 'Can view lists'),
         )   
+   
 
    
 

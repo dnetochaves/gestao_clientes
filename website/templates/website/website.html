@@ -1,4 +1,6 @@
 {% load static %}
+{% load tags %}
+{% current_time "%d-%m-%Y %I:%M %p" as the_time %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -35,7 +37,7 @@ body {
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
     <div class="container">
-      <a class="navbar-brand" href="#"><i class="fas fa-dragon"></i></a>
+      <a class="navbar-brand" href="#"><i class="fas fa-dragon"></i> Gestão de Clientes</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -59,7 +61,7 @@ body {
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <h1 class="mt-5 text-white">Gestão de Clientes</h1>
+          <h1 class="mt-5 text-white">{{ the_time }}</h1>
           <p class="text-white">
             Projeto de software desenvolvido com o intuito de estudar o framework Django, aplicando as melhores 
             práticas de desenvolvimento, buscando sempre uma evolução pessoal continua.

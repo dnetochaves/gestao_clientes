@@ -24,6 +24,7 @@
               <th scope="col">age</th>
               <th scope="col">salary</th>
               <th scope="col">bio</th>
+              <th scope="col">Doc</th>
               <th scope="col">photo</th>
               <th scope="col"></th>
             </tr>
@@ -37,12 +38,17 @@
               <td>{{ persons.age }}</td>
               <td>{{ persons.salary }}</td>
               <td>{{ persons.bio }}</td>
+              <td>{{ persons.doc }}</td>
               <td><a href="{{ persons.photo }}">{{ persons.photo }}</td>
               <td>
                 <a href="{% url 'delete_person' persons.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-trash"></i></a>
                 <a href="{% url 'update_person' persons.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></a>
               </td>
             </tr>
+             {% empty%}
+                <div class="alert alert-primary" role="alert">
+                  Empty data return
+                </div>
             {% endfor %}
           </tbody>
         </table>

@@ -1,12 +1,14 @@
+{% load tags %}
+{% current_time "%d-%m-%Y %I:%M %p" as the_time %}
 <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Gestão de Clientes 2020</div>
+            <div class="text-muted">Copyright &copy; Dmeval Neto</div>
+            <div class="text-muted">{{ the_time }} | {% version %} </div>
             <div>
-                <a href="#">Privacy Policy</a>
-                &middot;
-                <a href="#">Terms &amp; Conditions</a>
+                <a href="#">Termos &amp; Condições</a>
             </div>
         </div>
+        
     </div>
 </footer>

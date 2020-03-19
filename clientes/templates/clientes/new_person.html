@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-<div class="container-fluid">
+<div class="container">
 
 <br>
         <form method="POST" enctype="multipart/form-data">
@@ -25,11 +25,14 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
             {{ form.age|bootstrap }}
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
             {{ form.salary|bootstrap }}
+            </div>
+             <div class="form-group col-md-4">
+            {{ form.doc|bootstrap }}
             </div>
         </div>
         <div class="form-group">

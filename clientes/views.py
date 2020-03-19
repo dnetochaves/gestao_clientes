@@ -3,24 +3,34 @@ from django.contrib.auth.decorators import login_required
 from .models import Person, Docs
 from .forms import PersonForm
 from django.contrib import messages
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.views.generic.detail import DetailView
 from django.utils import timezone
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.db.models import Count, Avg
+from django.http import HttpResponse
 
 # Create your views here.
 
 @login_required
 def start(request):
     #return HttpResponse('start')
-    time = timezone.now()
-    return render(request, 'clientes/start_clientes.html', {'time': time})
+    return render(request, 'clientes/start_clientes.html')
+
+class DashBoard(TemplateView):
+    template_name = "clientes/dashboard.html"
+
+
 
 
 def person_list(request):
+    if not request.user.has_perm('clientes.view_person'):
+        messages.success(request, 'contact your system administrator. You are not allowed to access this area')
+        return render(request, 'clientes/start_clientes.html')
+        
     person = Person.objects.all()
-    return render(request, 'clientes/person_list.html', { 'person': person })
+    return render(request, 'clientes/person_list.html', {'person': person })
 
 
 @login_required()
@@ -58,7 +68,7 @@ class DocsList(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()
+        context['now'] = timezone.now() 
         return context
 
 
@@ -69,7 +79,7 @@ class DocsDetail(DetailView):
 
 class DocsCreate(CreateView):
     model = Docs
-    fields = ['type_name', 'note']
+    fields = ['type_name', 'number', 'note']
     success_url = 'docs_list'
 
 class DocsUpdate(UpdateView):
@@ -83,4 +93,5 @@ class DocsDelete(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('docs_list')
+        
     

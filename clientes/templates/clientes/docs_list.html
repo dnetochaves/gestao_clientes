@@ -20,7 +20,9 @@
             <tr>
               <th scope="col">Cod</th>
               <th scope="col">Type_name</th>
+              <th scope="col">Nmber</th>
               <th scope="col">Note</th>
+               <th scope="col">Person</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -29,12 +31,18 @@
             <tr>
               <th scope="row">{{ docs.id }}</th>
               <td>{{ docs.type_name }}</td>
+               <td>{{ docs.number }}</td>
               <td>{{ docs.note }}</td>
+              <td>{{ docs.person }}</td>
               <td>
                 <a href="{% url 'docs_delete' docs.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-trash"></i></a>
                 <a href="{% url 'docs_update' docs.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></a>
               </td>
             </tr>
+            {% empty%}
+                <div class="alert alert-primary" role="alert">
+                 Empty data return
+                </div>
             {% endfor %}
           </tbody>
         </table>

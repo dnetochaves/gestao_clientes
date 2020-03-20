@@ -81,7 +81,7 @@ class DocsList(ListView):
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.has_perm('clientes.view'):
+        if not request.user.has_perm('clientes.view_docs'):
             return HttpResponse('Sem Acesso')
         return super(DocsList, self).dispatch(request, *args, **kwargs)
 
@@ -96,32 +96,28 @@ class DocsDetail(DetailView):
 
     model = Docs
 
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.has_perm('clientes.view_person'):
-            return HttpResponse('Sem Acesso')
-        return super(DocsList, self).ispatch(self, request, *args, **kwargs)
-
     
 
 
 class DocsCreate(CreateView):
     model = Docs
-    
+
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.has_perm('clientes.add_person'):
+        if not request.user.has_perm('clientes.view_docs'):
             return HttpResponse('Sem Acesso')
-        return super(DocsList, self).ispatch(self, request, *args, **kwargs)
+        return super(DocsCreate, self).dispatch(request, *args, **kwargs)
     
     fields = ['type_name', 'number', 'note']
     success_url = 'docs_list'
+
 
 class DocsUpdate(UpdateView):
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.has_perm('clientes.change_person'):
+        if not request.user.has_perm('clientes.change_docs'):
             return HttpResponse('Sem Acesso')
-        return super(DocsList, self).ispatch(self, request, *args, **kwargs)
+        return super(DocsUpdate, self).dispatch(request, *args, **kwargs)
     
 
     fields = ['type_name', 'note']
@@ -132,9 +128,9 @@ class DocsDelete(DeleteView):
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.has_perm('clientes.delete_person'):
+        if not request.user.has_perm('clientes.delete_docs'):
             return HttpResponse('Sem Acesso')
-        return super(DocsList, self).ispatch(self, request, *args, **kwargs)
+        return super(DocsDelete, self).dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('docs_list')

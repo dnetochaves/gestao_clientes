@@ -11,6 +11,7 @@ from django.urls import reverse_lazy
 from django.db.models import Count, Avg
 from django.http import HttpResponse
 from django.contrib.auth.decorators import permission_required, login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 # Create your views here.
@@ -22,14 +23,14 @@ def start(request):
 
 
 @login_required    
-@permission_required('clientes.manager_dashboard-clients')
+@permission_required('clientes.view_teste')
 def manager_dashboar(request):
     #return HttpResponse('start')
     return render(request, 'clientes/dashboard.html')
     
 
-class DashBoard(TemplateView):
-
+class DashBoard(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
+   permission_required = ('clientes.manager_dashboard-clients')
    template_name = ('clientes/dashboard.html')
 
 
@@ -77,7 +78,8 @@ def delete_person(request, id):
     return redirect('/clientes/person_list') 
 
 
-class DocsList(ListView):
+class DocsList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    permission_required = ('clientes.view_list_person')
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):
@@ -92,14 +94,14 @@ class DocsList(ListView):
         return context
 
 
-class DocsDetail(DetailView):
+class DocsDetail(LoginRequiredMixin, DetailView):
 
     model = Docs
 
     
 
 
-class DocsCreate(CreateView):
+class DocsCreate(LoginRequiredMixin, CreateView):
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):
@@ -111,7 +113,7 @@ class DocsCreate(CreateView):
     success_url = 'docs_list'
 
 
-class DocsUpdate(UpdateView):
+class DocsUpdate(LoginRequiredMixin, UpdateView):
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):
@@ -124,7 +126,7 @@ class DocsUpdate(UpdateView):
     success_url = reverse_lazy('docs_list')
 
 
-class DocsDelete(DeleteView):
+class DocsDelete(LoginRequiredMixin, DeleteView):
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):

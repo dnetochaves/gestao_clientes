@@ -20,6 +20,7 @@ from website import urls as website_urls
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -28,4 +29,6 @@ urlpatterns = [
     path('', include(website_urls)),
     path('login/', LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('change-password/', auth_views.PasswordChangeView.as_view(), name="change-password"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

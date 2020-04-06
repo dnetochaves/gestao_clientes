@@ -26,6 +26,7 @@ SECRET_KEY = 'ci+k+)*bl2=#@qpvk0r=3zm$1xjd^4a%+d3jyh(q3-5=x=x@62'
 DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
+ADMINS = [('Dmeval Neto', 'dnetochaves@gmail.com')]
 
 
 # Application definition

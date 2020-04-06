@@ -14,12 +14,14 @@ from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
+
 # Create your views here.
 
 @login_required
 def start(request):
     #return HttpResponse('start')
     return render(request, 'clientes/start_clientes.html')
+
 
 
 @login_required    
@@ -78,8 +80,8 @@ def delete_person(request, id):
     return redirect('/clientes/person_list') 
 
 
-class DocsList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
-    permission_required = ('clientes.view_list_person')
+class DocsList(LoginRequiredMixin, ListView):
+    #ermission_required = ('clientes.view_list_person')
     model = Docs
 
     def dispatch(self, request, *args, **kwargs):

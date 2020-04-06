@@ -9,5 +9,5 @@ def current_time(format_string):
 
 @register.simple_tag
 def version():
-    version = 'v2.0'
+    version = 'v2.1'
     return version

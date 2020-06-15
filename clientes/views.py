@@ -20,8 +20,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 @login_required
 def start(request):
     #return HttpResponse('start')
-    1/0
     return render(request, 'clientes/start_clientes.html')
+
+
+
 
 
 

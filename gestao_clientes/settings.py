@@ -23,10 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ci+k+)*bl2=#@qpvk0r=3zm$1xjd^4a%+d3jyh(q3-5=x=x@62'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
-ADMINS = [('Dmeval Neto', 'dnetochaves@gmail.com')]
 
 
 # Application definition
@@ -51,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'mymiddleware.MetaData.MetaData',
 ]
 
 ROOT_URLCONF = 'gestao_clientes.urls'

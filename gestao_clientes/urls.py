@@ -31,4 +31,5 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="logout"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('change-password/', auth_views.PasswordChangeView.as_view(), name="change-password"),
+    path('accounts_sm/', include('allauth.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -27,20 +27,33 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
+ADMINS = [('Neto', 'dnetochaves@gmail',)]
+
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+
     'clientes',
     'website',
     'bootstrapform',
 ]
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,8 +84,18 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

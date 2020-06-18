@@ -39,7 +39,7 @@
               <td>{{ persons.salary }}</td>
               <td>{{ persons.bio }}</td>
               <td>{{ persons.doc }}</td>
-              <td><a href="{{ persons.photo }}">{{ persons.photo }}</td>
+              <td><a href="{{ persons.photo }}" target="_blank">{{ persons.photo }}</a></td>
               <td>
                 <a href="{% url 'delete_person' persons.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-trash"></i></a>
                 <a href="{% url 'update_person' persons.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></a>
